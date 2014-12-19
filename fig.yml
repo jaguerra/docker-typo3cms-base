@@ -1,0 +1,15 @@
+web:
+  build: .
+  links:
+   - db
+  ports:
+    - "4567:80"
+  volumes:
+   - ./test/:/var/www/html/
+db:
+  image: orchardup/mysql
+  environment:
+    MYSQL_DATABASE: test
+    MYSQL_ROOT_PASSWORD: root
+  volumes:
+    - /var/lib/mysql
